@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>                                                                <head>
+  <title>Redirect</title>                                               <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>                                                                 body {
+      margin: 0;                                                            display: flex;
+      flex-direction: column;                                               align-items: center;
+      justify-content: center;                                              height: 90vh;
+      background-color: #f0f0f0;                                            font-family: sans-serif;                                            }
+                                                                          a {                                                                     text-decoration: none;
+      color: #333;                                                          font-size: 28px;
+      margin-bottom: 20px;                                                  line-height: 1.2;
+      text-align: center;                                                 }
+                                                                          button {
+      background-color: #4CAF50;                                            color: white;
+      padding: 15px 30px;                                                   border: none;
+      border-radius: 5px;                                                   font-size: 18px;
+      cursor: pointer;                                                    }
+  </style>
+</head>
+<body>
+  <a id="link" href=""></a>
+  <button id="openButton">Open</button>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const link = urlParams.get('url');
+    const descr = urlParams.get('descr');
+    document.getElementById('link').textContent = descr || link;
+    document.getElementById('link').href = link;
+
+    const openButton = document.getElementById('openButton');
+    openButton.addEventListener('click', () => {
+      window.location.href = link;
+    });
+  </script>
+</body>
+</html>
